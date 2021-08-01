@@ -1,15 +1,21 @@
-from datetime import datetime
-
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
+from typing import Callable
+from datetime import datetime
+
+class MySQlAlchemy(SQLAlchemy):
+    Column : Callable
+    Integer : Callable
+    String : Callable
 
 app = Flask(__name__)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-db = SQLAlchemy(app)
+
+db=MySQlAlchemy(app)
 
 
 class Todo(db.Model):
-    __tablename__='tasks'
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
     completed = db.Column(db.Integer, default=0)
