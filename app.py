@@ -3,16 +3,18 @@ from flask_sqlalchemy import SQLAlchemy
 from typing import Callable
 from datetime import datetime
 
+
 class MySQlAlchemy(SQLAlchemy):
-    Column : Callable
-    Integer : Callable
-    String : Callable
+    Column: Callable
+    Integer: Callable
+    String: Callable
+
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 
-db=MySQlAlchemy(app)
+db = MySQlAlchemy(app)
 
 
 class Todo(db.Model):
