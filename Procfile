@@ -1,1 +1,1 @@
-web: gunicorn taskyman2:app.py
+web: gunicorn taskyman2:app
